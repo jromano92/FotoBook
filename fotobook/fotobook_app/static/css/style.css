@@ -1,0 +1,44 @@
+.container-fluid {
+    padding: 35px;
+}
+.container, .container-fluid {
+    font-family: 'Open Sans', sans-serif;
+}
+.text-white {
+    margin-bottom: 45px;
+}
+
+.btn_register, .edit {
+    color: gray;
+}
+.vl {
+    border-left: 6px solid gray;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 20%;
+}
+.login {
+    width: 300px;
+    margin-left: 80px;
+}
+
+.row-2 {
+    margin-left: 100px;
+}
+.photobox {
+    margin-bottom: 30px;
+    height: 450px;
+    overflow-y: auto;
+}
+.mb-3 {
+    width: 350px;
+    height: 400px;
+}
+.upload {
+    width: 300px;
+}
+.heart {
+    margin-left: 20px;
+}

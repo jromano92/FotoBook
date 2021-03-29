@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create An Account</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="container card bg-dark text-white">
+    <div class="text-left"><a href="{% url 'index' %}"><button class="btn btn-outline-secondary">Back</button></a></div>
+    <div class="main text-white-50">
+        <h1 class="text-white text-center">Create a FotoBook Account!</h1>
+        {% if messages %}
+        <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="row">
+            <div class="col-12 col-sm-5">
+                <form action="register" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" id="first_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control">
+                    </div>
+            </div>
+            <div class="col-12 col-sm-5">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" name="confirm" id="confirm" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="about_me">About Me Bio</label>
+                    <textarea class="form-control" rows="4" name="about_me"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="text-left"><button class="btn btn-outline-secondary">Register</button></div>
+
+    </div>
+    </form>
+
+</body>
+
+</html>

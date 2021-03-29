@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="container card bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand">
+
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto"></ul>
+                <a href="{% url 'dashboard' %}" role="button" class="btn btn-outline-secondary">Dashboard</a>
+                <a href="/" role="button" class="btn btn-outline-secondary">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <div class="container">
+        {% if messages %}
+        <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+        <h2 class="edit">Hello {{ user.first_name }}, please update your info!</h2> <br>
+        <form class="upload" action='/user/{{user.id}}/update' method="post" autocomplete="on">
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder="First Name" name='first_name' /></td>
+                    </tr>
+                    <tr>
+
+                        <td><input type="text" placeholder="Last Name" name='last_name' /></td>
+                    </tr>
+                    <tr>
+
+                        <td><input type="text" placeholder="Email" name='email' /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button class="btn btn-outline-secondary">Update</button>
+        </form>
+    </div>
+</body>
+
+</html>

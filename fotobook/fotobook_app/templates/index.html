@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FotoBook</title>
+    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="container-fluid bg-dark text-white-50">
+
+    <div class="text-center">
+        {% if messages %}
+        <ul class="messages text-left">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+        <h1 class="text-white">Welcome to FotoBook!</h1><br>
+
+        <div class="row">
+            <div class="col-lg-6"><br>
+
+                <h3 class="text-white">Registered?</h3><br>
+                <button class="btn btn-outline-secondary"><a class="btn_register" href='/CreateAccount'>No</a></button>
+                <br>
+            </div>
+            <div class="vl"></div>
+
+            <div class="row-2">
+                <div class="col-lg-6">
+                    <form class="login" action="login" method="POST">
+                        <h3 class="text-white">Sign in</h3>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                        <button class="btn btn-outline-secondary">Login</button>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
